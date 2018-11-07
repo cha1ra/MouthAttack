@@ -40,7 +40,6 @@ class Player extends GameObject{
         img.src = this.imgSrc;
         super.setObjWH(img.width, img.height);
         img.onload = () => {
-            //this.ctx.clearRect(this.posX,this.posY,img.width,img.height);
             this.ctx.drawImage(img,this.posX,this.posY);
         }
     }
@@ -51,19 +50,20 @@ class TextBall extends GameObject{
     constructor(posX,posY,text,canvasId){
         super(posX,posY,canvasId);
         this.text = text;
-        this.fontSize = 18;
+        this.fontSize = 32;
     }
 
     draw(){
         this.setTextStyle();
         const textWidth = this.ctx.measureText(this.text);
-        console.log(textWidth.width, this.fontSize);
+        super.setObjWH(textWidth.width, this.fontSize);
         this.ctx.fillText(this.text,this.posX,this.posY);
     }
     
     setTextStyle(){
-        this.ctx.font = this.fontSize;
+        this.ctx.font = this.fontSize + "px 'ＭＳ 明朝'";
         this.ctx.fillStyle = '#ff0000';
+        this.ctx.textBaseline = "top";
     }
 
 }
@@ -76,12 +76,11 @@ console.log(myPlayer.posX);
 //Animation
 setInterval(function(){
     myPlayer.clear();
-    myPlayer.move(5,5);
+    //myPlayer.move(5,5);
     myPlayer.draw();
     text.clear();
-    text.move(0,2);
+    //text.move(0,2);
     text.draw();
-    
 },50)
 
 
