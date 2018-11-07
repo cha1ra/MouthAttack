@@ -1,6 +1,6 @@
-import GameObject from './GameObject.js';
+import GameObjectModel from './GameObjectModel.js';
 
-export default class TextBall extends GameObject{
+export default class TextBall extends GameObjectModel{
     constructor(posX,posY,text,canvasId){
         super(posX,posY,canvasId);
         this.text = text;

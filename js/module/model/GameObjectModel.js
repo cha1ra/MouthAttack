@@ -1,10 +1,12 @@
-export default class GameObject {
-    constructor(posX,posY,canvasId){
-        this.posX = posX;
-        this.posY = posY;
+export class GameObjectModel {
+    constructor(props){
+        this.onReceiveCallBack = props.onReceiveCallBack;
+        this.init();
+        this.posX = props.posX;
+        this.posY = props.posY;
         this.objW = 0;
         this.objH = 0;
-        this.thisCanvas = document.querySelector(canvasId);
+        this.thisCanvas = document.querySelector(props.canvasId);
         this.ctx = this.thisCanvas.getContext('2d');
     }
 
@@ -22,3 +24,5 @@ export default class GameObject {
         this.objH = h;
     }
 }
+
+export default GameObjectModel;
